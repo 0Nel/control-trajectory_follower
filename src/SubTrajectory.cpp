@@ -277,6 +277,9 @@ std::pair< double, double > SubTrajectory::error(const Eigen::Vector2d& pos, dou
     double heading = currentHeading;
     if(!driveForward())
         heading = angleLimit(currentHeading + M_PI);
+    if (!orientationSpline.isEmpty() && posSpline.isSingleton()) {
+      return std::make_pair(0.0, goalPose.orientation - currentHeading);
+    }
     double distanceError = posSpline.distanceError(Eigen::Vector3d(pos.x(), pos.y(), 0.), curveParam);
     double headingError = posSpline.headingError(heading, curveParam);
         

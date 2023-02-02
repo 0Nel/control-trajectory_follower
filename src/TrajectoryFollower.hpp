@@ -31,7 +31,7 @@ public:
      *
      * Here it checks for the initial stability of the trajectory
      */
-    void setNewTrajectory(const SubTrajectory &trajectory, const base::Pose& robotPose);
+    void setNewTrajectory(const SubTrajectory &trajectory, const base::Pose& robotPose, bool last = false);
 
     /**
      * @brief Here we set the heading error tolerance for the orientation alignment for planner defined point-turns
@@ -85,7 +85,10 @@ private:
     FollowerStatus followerStatus, lastFollowerStatus;
     SubTrajectory trajectory;
     FollowerConfig followerConf;
+    bool lastSubTrajectory;
+    double endSpeedDamping;
     std::unique_ptr<Controller> controller;
+    DriveMode lastDriveMode;
 };
 
 }

@@ -62,6 +62,7 @@ struct FollowerConfig
     double maxForwardLenght, maxBackwardLenght;
     double slamPoseErrorCheckEllipseX, slamPoseErrorCheckEllipseY;
     bool usePoseErrorReachedEndCheck;
+    double endSpeedDamping;
 
     FollowerConfig()
         : controllerType(CONTROLLER_UNKNOWN),
@@ -79,6 +80,7 @@ struct FollowerConfig
           maxBackwardLenght(base::unset< double >()),
           slamPoseErrorCheckEllipseX(base::unset< double >()),
           slamPoseErrorCheckEllipseY(base::unset< double >()),
+          endSpeedDamping(base::unset< double >()),
           usePoseErrorReachedEndCheck(false)
     {
     }
